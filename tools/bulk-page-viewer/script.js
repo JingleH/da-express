@@ -3,7 +3,12 @@ import { ROOT, getDocs, body2Row, setToken } from './utils.js';
 
 const { token } = await DA_SDK;
 setToken(token);
-
+function updateQueryParam(key, value) {
+  const url = new URL(window.location.href);
+  url.searchParams.set(key, value);
+  window.history.replaceState({}, '', url);
+}
+updateQueryParam('test', 2);
 async function init() {
   const main = document.body.querySelector('main');
   const results = main.querySelector('.results');
@@ -27,6 +32,12 @@ async function init() {
     loader.classList.add('hidden');
     results.classList.remove('hidden');
     results.append(...rows);
+
+    const blocks = new Set(
+      [...results.querySelectorAll('[data-block-name]')].map((node) =>
+        node.getAttribute('data-block-name')
+      )
+    );
   });
 
   const filterInput = header.querySelector('input.filter');
@@ -43,9 +54,6 @@ async function init() {
     });
   });
   searchInput.value = '/express/template-docs';
-
-  
-
 }
 
 init().catch(console.error);

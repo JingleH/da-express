@@ -129,6 +129,7 @@ export function body2Row({ text, path }) {
         const { blockName, table } = block2Table(node);
         nodeWrapper.append(table);
         nodeWrapper.classList.add('block', blockName);
+        nodeWrapper.setAttribute('data-block-name', blockName);
       } else {
         nodeWrapper.append(node);
         nodeWrapper.classList.add('raw-content');
