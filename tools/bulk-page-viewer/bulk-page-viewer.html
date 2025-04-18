@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Manager POC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="data:,">
+    <!-- Import DA App SDK -->
+    <script src="https://da.live/nx/utils/sdk.js" type="module"></script>
+    <!-- Project App Logic -->
+    <link rel="stylesheet" href="./page-manager.css">
+    <script src="./script.js" type="module">
+    </script>
+  </head>
+  <body>
+    <header>
+      <div>
+        <input class="folder"></input>
+        <button class="folder">view</button>
+      </div>
+      <div>
+        <input class="filter"></input>
+        <button class="filter">filter</button>
+      </div>
+    </header>
+    <main>
+      <div class="results hidden"></div>
+      <div class="loader hidden">Loading...</div>
+    </main>
+  </body>
+</html>

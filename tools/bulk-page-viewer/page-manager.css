@@ -1,0 +1,74 @@
+body {
+  font-family: 'adobe-clean', 'Adobe Clean', 'Trebuchet MS', sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+
+main .hidden {
+  display: none;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+  padding: 10px 0 10px;
+  border-bottom: 1px black solid;
+}
+
+.row.hide {
+  display: none;
+}
+
+.row .path {
+  max-width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  /* resize: horizontal; */
+  overflow: auto;
+}
+.row .section {
+  max-width: 450px;
+  max-height: 300px;
+  overflow: auto;
+  flex-shrink: 0;
+  text-align: center;
+  scrollbar-width: thin;
+  display: flex;
+  gap: 10px;
+}
+
+.section-start {
+  background-color: #b3b3b3;
+  padding: 6px;
+}
+
+p {
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table th {
+  background: #f1f1f1;
+  font-weight: 700;
+}
+
+table td {
+  border: 2px solid #B1B1B1;
+  vertical-align: top;
+  min-width: 100px;
+  padding: 8px;
+  color: #464646;
+}
+
+img {
+  max-width: 100px;
+}
