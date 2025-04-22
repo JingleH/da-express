@@ -3,12 +3,7 @@ import { ROOT, getDocs, body2Row, setToken } from './utils.js';
 
 const { token } = await DA_SDK;
 setToken(token);
-function updateQueryParam(key, value) {
-  const url = new URL(window.location.href);
-  url.searchParams.set(key, value);
-  window.history.replaceState({}, '', url);
-}
-updateQueryParam('test', 2);
+
 async function init() {
   const main = document.body.querySelector('main');
   const results = main.querySelector('.results');
