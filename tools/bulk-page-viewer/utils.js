@@ -105,7 +105,7 @@ export function block2Table(block) {
   return { blockName, table };
 }
 
-export function body2Row({ text, path }) {
+export function convertBody({ text, path }) {
   const body = parseBodyText(text);
   const main = body.querySelector('main');
   const sections = main.querySelectorAll(':scope > div');
@@ -119,6 +119,7 @@ export function body2Row({ text, path }) {
       createTag('a', { href: editorPath, class: 'editor-link', target: '_blank' }, path),
     ),
   );
+  const blockSet = new Set();
   sections.forEach((section, i) => {
     row.append(createTag('div', { class: 'section-start' }, i + 1));
     const sectionWrapper = createTag('div', { class: 'section' });
@@ -126,6 +127,7 @@ export function body2Row({ text, path }) {
       const nodeWrapper = createTag('div', { class: 'node-wrapper' });
       if (node.tagName === 'DIV') {
         const { blockName, table } = block2Table(node);
+        blockSet.add(blockName);
         nodeWrapper.append(table);
         nodeWrapper.classList.add('block', blockName);
         nodeWrapper.setAttribute('data-block-name', blockName);
@@ -137,7 +139,7 @@ export function body2Row({ text, path }) {
     });
     row.append(sectionWrapper);
   });
-  return row;
+  return { row, blockSet, sectionCnt: sections.length };
 }
 
 export async function getDocs(dir) {

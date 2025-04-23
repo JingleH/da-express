@@ -9,6 +9,16 @@ header {
   gap: 20px;
 }
 
+button.active {
+  background-color: green;
+  color: white;
+}
+
+button.inactive {
+  background-color: red;
+  color: white;
+}
+
 main .hidden {
   display: none;
 }

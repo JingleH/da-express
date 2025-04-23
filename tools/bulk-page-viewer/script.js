@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 import DA_SDK from 'https://da.live/nx/utils/sdk.js';
-import { ROOT, getDocs, body2Row, setToken } from './utils.js';
+import { ROOT, getDocs, convertBody, setToken, createTag } from './utils.js';
 
 const { token } = await DA_SDK;
 setToken(token);
@@ -10,6 +10,8 @@ async function init() {
   const results = main.querySelector('.results');
   const loader = main.querySelector('.loader');
   const header = document.body.querySelector('header');
+  const blockList = header.querySelector('.block-list');
+  const sectionList = header.querySelector('.section-list');
 
   // const hidingBlocks = new Set();
 
@@ -24,16 +26,35 @@ async function init() {
     loader.classList.remove('hidden');
     results.querySelectorAll('.row').forEach((row) => row.remove());
     const bodies = await getDocs(`${ROOT}${folder}`);
-    const rows = bodies.map((body) => body2Row(body));
+    const blockNames = new Set();
+    let maxSectionCnt = 0;
+    const rows = bodies.map((body) => {
+      const { row, blockSet, sectionCnt } = convertBody(body);
+      maxSectionCnt = Math.max(sectionCnt, maxSectionCnt);
+      blockSet.forEach((blockName) => blockNames.add(blockName));
+      return row;
+    });
     loader.classList.add('hidden');
     results.classList.remove('hidden');
     results.append(...rows);
 
-    // const blocks = new Set(
-    //   [...results.querySelectorAll('[data-block-name]')].map((node) =>
-    //     node.getAttribute('data-block-name')
-    //   )
-    // );
+    blockList.innerHTML = '';
+    blockNames.forEach((blockName) => {
+      blockList.append(createTag('button', { class: 'block-button active' }, blockName));
+    });
+  });
+  header.addEventListener('click', ({ target }) => {
+    if (!target.classList.contains('block-button') && !target.classList.contains('section-button')) return;
+    const isActive = target.classList.contains('active');
+    if (target.classList.contains('block-button')) {
+      target.classList.remove(isActive ? 'active' : 'inactive');
+      target.classList.add(isActive ? 'inactive' : 'active');
+      [...main.querySelectorAll('.node-wrapper.block')].forEach((block) => {
+        if (block.classList.contains(target.textContent)) {
+          block.classList.toggle('hidden');
+        }
+      });
+    }
   });
 
   const filterInput = header.querySelector('input.filter');
