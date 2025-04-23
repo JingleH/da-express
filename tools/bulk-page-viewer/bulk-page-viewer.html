@@ -8,8 +8,9 @@
     <script src="https://da.live/nx/utils/sdk.js" type="module"></script>
     <!-- Project App Logic -->
     <link rel="stylesheet" href="./page-manager.css">
-    <script src="./script.js" type="module">
-    </script>
+    <script src="./script.js" type="module"></script>
+    <!-- <script src="./components/hello.js" type="module"></script>
+    <script src="./components/SearchInput.js" type="module"></script> -->
   </head>
   <body>
     <header>
@@ -21,7 +22,9 @@
         <input class="filter"></input>
         <button class="filter">filter</button>
       </div>
+      <search-input></search-input>
     </header>
+    <simple-greeting name="World"></simple-greeting>
     <main>
       <div class="results hidden"></div>
       <div class="loader hidden">Loading...</div>

@@ -4,7 +4,7 @@ export const REPO = 'da-express';
 export const ROOT = `/${ORG}/${REPO}`;
 
 export const [getToken, setToken] = (() => {
-  let config = {};
+  const config = {};
   return [
     () => config.token,
     (t) => {
@@ -22,15 +22,14 @@ export function isDoc(file) {
 }
 
 export async function throwFetchErr(res) {
-  const errorText = await response.text();
-  throw new Error(`${response.status} - ${response.statusText}: ${errorText}`);
+  const errorText = await res.text();
+  throw new Error(`${res.status} - ${res.statusText}: ${errorText}`);
 }
 
 export async function ls(dir) {
   const token = getToken();
   const headers = { Authorization: `Bearer ${token}` };
   const url = `${DA_API}/list${dir}`;
-  console.log(DA_API, dir, url);
   const resp = await fetch(url, { method: 'GET', headers });
   if (!resp.ok) {
     throwFetchErr(resp);
@@ -155,7 +154,7 @@ export async function getDocs(dir) {
         reqs.push(cat(doc.path));
         srcs.push(doc.path);
       });
-      dirs.forEach((dir) => dirStack.push(dir.path));
+      dirs.forEach(({ path }) => dirStack.push(path));
     }
     const docContent = await Promise.all(reqs);
     const data = srcs.map((path, index) => ({ path, text: docContent[index] }));
@@ -163,5 +162,6 @@ export async function getDocs(dir) {
     return data;
   } catch (e) {
     console.log(e);
+    return null;
   }
 }

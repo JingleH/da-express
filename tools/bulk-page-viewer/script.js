@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import DA_SDK from 'https://da.live/nx/utils/sdk.js';
 import { ROOT, getDocs, body2Row, setToken } from './utils.js';
 
@@ -10,7 +11,7 @@ async function init() {
   const loader = main.querySelector('.loader');
   const header = document.body.querySelector('header');
 
-  const hidingBlocks = new Set();
+  // const hidingBlocks = new Set();
 
   const searchInput = header.querySelector('input.folder');
   const searchButton = header.querySelector('button.folder');
@@ -28,11 +29,11 @@ async function init() {
     results.classList.remove('hidden');
     results.append(...rows);
 
-    const blocks = new Set(
-      [...results.querySelectorAll('[data-block-name]')].map((node) =>
-        node.getAttribute('data-block-name')
-      )
-    );
+    // const blocks = new Set(
+    //   [...results.querySelectorAll('[data-block-name]')].map((node) =>
+    //     node.getAttribute('data-block-name')
+    //   )
+    // );
   });
 
   const filterInput = header.querySelector('input.filter');
