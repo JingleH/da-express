@@ -1,3 +1,4 @@
+/* eslint-disable operator-linebreak */
 export const DA_API = 'https://admin.da.live';
 export const ORG = 'jingleh';
 export const REPO = 'da-express';
@@ -129,8 +130,8 @@ export function convertBody({ text, path }) {
         const { blockName, table } = block2Table(node);
         blockSet.add(blockName);
         nodeWrapper.append(table);
-        nodeWrapper.classList.add('block', blockName);
-        nodeWrapper.setAttribute('data-block-name', blockName);
+        nodeWrapper.classList.add('block', blockName || 'unknown');
+        nodeWrapper.setAttribute('data-block-name', blockName || 'unknown');
       } else {
         nodeWrapper.append(node);
         nodeWrapper.classList.add('raw-content');
