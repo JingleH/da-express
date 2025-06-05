@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 // eslint-disable-next-line import/no-unresolved
 import DA_SDK from 'https://da.live/nx/utils/sdk.js';
-import { ROOT, setToken, post, fetchTopics } from './utils.js';
+import { setToken } from './utils.js';
 import { html, render } from './htm-preact.js';
 import App from './app.js';
 

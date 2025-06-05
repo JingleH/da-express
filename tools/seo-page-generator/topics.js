@@ -14,13 +14,13 @@ const str = `[[Labubu Summer Drop Craze]]
 {{Grunge fashion, characterized by flannel shirts, thrifted pieces, and a DIY ethos, is making a comeback in 2025. Embraced by a new generation seeking authenticity, this trend is reflected in fashion and music scenes. Adobe Express enables users to design promotional materials and social media content that embody the grunge aesthetic.}}
 ||posters, Instagram stories, YouTube thumbnails||
 
-[[Festival of Colors Summer Parties]]
-{{Inspired by Holi, many summer events now include color-throwing parties. Adobe Express can help hosts create vibrant flyers, posters, and reels to promote these joy-filled events with bursts of color and energy.}}
-||flyers, posters, reels, Instagram posts||
-
 [[Pride Month 2025 Visual Campaigns]]
 {{June marks Pride Month, and brands and individuals alike are celebrating LGBTQ+ identities through colorful campaigns and heartfelt messages. Adobe Express offers inclusive templates for bold posters, banners, and social content that champion equality and love.}}
 ||posters, banners, reels, TikTok videos, Instagram stories||
+
+[[Festival of Colors Summer Parties]]
+{{Inspired by Holi, many summer events now include color-throwing parties. Adobe Express can help hosts create vibrant flyers, posters, and reels to promote these joy-filled events with bursts of color and energy.}}
+||flyers, posters, reels, Instagram posts||
 
 [[Graduation Season 2025]]
 {{Graduations are in full swing across high schools and universities. From digital invites to celebratory reels, Adobe Express helps users craft beautiful cards, banners, and social media posts to honor graduates and share the milestone with friends and family.}}
