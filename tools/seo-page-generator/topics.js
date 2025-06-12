@@ -14,9 +14,9 @@ const str = `[[Labubu Summer Drop Craze]]
 {{Grunge fashion, characterized by flannel shirts, thrifted pieces, and a DIY ethos, is making a comeback in 2025. Embraced by a new generation seeking authenticity, this trend is reflected in fashion and music scenes. Adobe Express enables users to design promotional materials and social media content that embody the grunge aesthetic.}}
 ||posters, Instagram stories, YouTube thumbnails||
 
-[[Pride Month 2025 Visual Campaigns]]
-{{June marks Pride Month, and brands and individuals alike are celebrating LGBTQ+ identities through colorful campaigns and heartfelt messages. Adobe Express offers inclusive templates for bold posters, banners, and social content that champion equality and love.}}
-||posters, banners, reels, TikTok videos, Instagram stories||
+[[Juneteenth Awareness & Celebration]]
+{{Juneteenth, now widely recognized and celebrated, inspired educational content and celebration announcements. Adobe Express empowers users to create visually compelling posters, banners, and social media stories that honor the holiday's significance.}}
+||posters, banners, Instagram stories, reels||
 
 [[Festival of Colors Summer Parties]]
 {{Inspired by Holi, many summer events now include color-throwing parties. Adobe Express can help hosts create vibrant flyers, posters, and reels to promote these joy-filled events with bursts of color and energy.}}
@@ -54,9 +54,9 @@ const str = `[[Labubu Summer Drop Craze]]
 {{From Glastonbury to Lollapalooza, summer music festivals are a hotspot for visual promotion. Adobe Express offers energetic poster and banner templates that help organizers and attendees design custom event visuals and after-party recaps.}}
 ||posters, banners, Instagram stories, reels||
 
-[[Juneteenth Awareness & Celebration]]
-{{Juneteenth, now widely recognized and celebrated, inspired educational content and celebration announcements. Adobe Express empowers users to create visually compelling posters, banners, and social media stories that honor the holiday's significance.}}
-||posters, banners, Instagram stories, reels||
+[[Pride Month 2025 Visual Campaigns]]
+{{June marks Pride Month, and brands and individuals alike are celebrating LGBTQ+ identities through colorful campaigns and heartfelt messages. Adobe Express offers inclusive templates for bold posters, banners, and social content that champion equality and love.}}
+||posters, banners, reels, TikTok videos, Instagram stories||
 
 [[#BookshelfWealth Home Decor Trend]]
 {{Interior design lovers are curating their bookshelves as status symbols. Adobe Express helps creators style visual posts and reels showcasing their collections in elegant or cozy themes that tap into this visual trend.}}
