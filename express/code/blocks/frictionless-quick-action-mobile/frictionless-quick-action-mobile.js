@@ -75,12 +75,17 @@ function selectElementByTagPrefix(p) {
   return Array.from(allEls).find((e) => e.tagName.toLowerCase().startsWith(p.toLowerCase()));
 }
 
-export function runQuickAction(quickAction, data, block) {
-  // TODO: need the button labels from the placeholders sheet if the SDK default doens't work.
+const downloadKey = 'download-to-phone';
+const editKey = 'edit-in-adobe-express-for-free';
+export async function runQuickAction(quickAction, data, block) {
+  let downloadText = await replaceKey(downloadKey, getConfig());
+  if (downloadText === downloadKey.replaceAll('-', ' ')) downloadText = 'Download to Phone';
+  let editText = await replaceKey(editKey, getConfig());
+  if (editText === editKey.replaceAll('-', ' ')) editText = 'Edit in Adobe Express for free';
   const exportConfig = [
     {
       id: 'download-button',
-      label: 'Download to Phone',
+      label: downloadText,
       action: {
         target: 'download',
       },
@@ -95,7 +100,7 @@ export function runQuickAction(quickAction, data, block) {
     },
     {
       id: 'edit-in-express',
-      label: 'Edit in Adobe Express for free',
+      label: editText,
       action: {
         target: 'express',
       },
@@ -297,6 +302,7 @@ export default async function decorate(block) {
   const rows = Array.from(block.children);
   const [quickActionRow] = rows.filter((row) => row.children[0]?.textContent?.toLowerCase()?.trim() === 'quick-action');
   quickActionRow?.remove();
+  // TODO: remove fallback row once authoring is done
   const [fallbackRow] = rows.filter((row) => row.children[0]?.textContent?.toLowerCase()?.trim() === 'fallback');
   fallbackRow?.remove();
   if (fallbackRow && getMobileOperatingSystem() !== 'Android') {
@@ -347,19 +353,20 @@ export default async function decorate(block) {
   };
 
   const dropzone = createTag('button', { class: 'dropzone hide', id: 'mobile-fqa-upload' });
-  const [animationContainer, dropzoneContent] = rows[1].children;
+  const [animationContainer, dropzoneContent] = dropzoneContainer.children;
   while (dropzoneContent.firstChild) dropzone.append(dropzoneContent.firstChild);
   dropzoneContent.replaceWith(dropzone);
   animationContainer.classList.add('animation-container');
   const animation = animationContainer.querySelector('a');
-
+  const animationEnd = () => {
+    dropzone.classList.remove('hide');
+    animationContainer.classList.add('hide');
+  };
   if (animation && animation.href.includes('.mp4')) {
     const video = transformLinkToAnimation(animation, false);
-    video.addEventListener('ended', () => {
-      dropzone.classList.remove('hide');
-      animationContainer.classList.add('hide');
-    });
-    // click to skip animation
+    video.addEventListener('ended', animationEnd);
+  } else if (animationContainer.querySelector('picture')) {
+    setTimeout(animationEnd, 3000);
   }
   const dropzoneText = createTag('div', { class: 'text' });
   while (dropzone.firstChild) {
